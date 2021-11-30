@@ -1,0 +1,24 @@
+title: 'Mashup Template'
+author:
+  name: Hugh Barnes
+  # email: 'joe@test.com'
+metadata:
+    description: 'Demo of port of Savory theme to Grav content management system. "Mashup templates have been developped by Orson.io team."'
+    rights: © Untitled | Website created with Mashup Template/Unsplash
+
+globals:
+
+  # contacts:
+  #   email: info@example.com
+  #   phone:
+  #     - '(+1) 000 123 456789'
+  #     - '+2 987 654 321'
+  #   address: 'Eiusmod Tempor inc ,St Dolore Place,Kingsport 56777' # optional in template
+
+  social: # these names are added to make the social links show
+    facebook: vacuousExample
+    twitter: realDonaldExample
+    instagram: selfieExample
+    dribbble: drabExample
+    linkedin: porfesionalExample
+    pinterest: iamPinterested
