@@ -2,14 +2,18 @@
 <html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
 <head>
 {% block head %}
-    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+
     <title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include 'partials/metadata.html.twig' %}
 
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
     <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
+	<link rel="apple-touch-icon" href="{{ url('theme://images/logo.png?resize=180,180')|e }}">
     <link rel="canonical" href="{{ page.canonical(true)|e }}" />
 {% endblock head %}
 
