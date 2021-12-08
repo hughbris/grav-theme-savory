@@ -3,100 +3,100 @@
 <html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
 <head>
 {% block head %}
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width,initial-scale=1" name="viewport">
+		<meta content="IE=edge" http-equiv="X-UA-Compatible">
+		<meta content="width=device-width,initial-scale=1" name="viewport">
 
-    <title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
+		<title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
 
-    {% include 'partials/metadata.html.twig' %}
+		{% include 'partials/metadata.html.twig' %}
 
-    <!-- Disable tap highlight on IE -->
-    <meta name="msapplication-tap-highlight" content="no">
+		<!-- Disable tap highlight on IE -->
+		<meta name="msapplication-tap-highlight" content="no">
 
-    <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
+		<link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
 	<link rel="apple-touch-icon" href="{{ url('theme://images/logo.png?resize=180,180')|e }}">
-    <link rel="canonical" href="{{ page.canonical(true)|e }}" />
+		<link rel="canonical" href="{{ page.canonical(true)|e }}" />
 {% endblock head %}
 
 {% block stylesheets %}
-    {% do assets.addCss('theme://css/main.82cfd66e.css', 100) %}
-    {% do assets.addCss('theme://css/custom.css', 1) %}
+		{% do assets.addCss('theme://css/main.82cfd66e.css', 100) %}
+		{% do assets.addCss('theme://css/custom.css', 1) %}
 {% endblock %}
 
 {% block javascripts %}
-    {% do assets.addJs('theme://js/main.85741bff.js', {'group': 'bottom'}) %}
+		{% do assets.addJs('theme://js/main.85741bff.js', {'group': 'bottom'}) %}
 {% endblock %}
 
 {% block assets deferred %}
-    {{ assets.css()|raw }}
-    {{ assets.js()|raw }}
+		{{ assets.css()|raw }}
+		{{ assets.js()|raw }}
 {% endblock %}
 </head>
 <body class="{{ page.header.body_classes|e }}">
 
 {% block header %}
-  <!-- Add your content of header -->
-  <header>
-    <div class="navbar navbar-default visible-xs">
-      <button type="button" class="navbar-toggle collapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="{{ home_url }}" class="navbar-brand">{{ site_name }}</a>
-    </div>
-    <nav class="sidebar">
-      <div class="navbar-collapse" id="navbar-collapse">
-        <div class="site-header hidden-xs">
-            <a class="site-brand" href="{{ home_url }}">
-              <img class="img-responsive site-logo" alt="{{ site_name ~ ' logo' }}" src="{{ media_directory('theme://images')[config.theme.brand_logo].cropResize(34,34).url }}">
-              {{ site_name }}
-            </a>
-          <p>{{ site.tagline }}</p>
-        </div>
+	<!-- Add your content of header -->
+	<header>
+		<div class="navbar navbar-default visible-xs">
+			<button type="button" class="navbar-toggle collapsed">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="{{ home_url }}" class="navbar-brand">{{ site_name }}</a>
+		</div>
+		<nav class="sidebar">
+			<div class="navbar-collapse" id="navbar-collapse">
+				<div class="site-header hidden-xs">
+						<a class="site-brand" href="{{ home_url }}">
+							<img class="img-responsive site-logo" alt="{{ site_name ~ ' logo' }}" src="{{ media_directory('theme://images')[config.theme.brand_logo].cropResize(34,34).url }}">
+							{{ site_name }}
+						</a>
+					<p>{{ site.tagline }}</p>
+				</div>
 
-        {% block header_navigation %}
-            {% include 'partials/navigation.html.twig' %}
-        {% endblock %}
+				{% block header_navigation %}
+						{% include 'partials/navigation.html.twig' %}
+				{% endblock %}
 
-        <nav class="nav-footer">
-          <p class="nav-footer-social-buttons">
-            <a class="fa-icon" href="https://www.instagram.com/" title="">
-              <i class="fa fa-instagram"></i>
-            </a>
-            <a class="fa-icon" href="https://dribbble.com/" title="">
-              <i class="fa fa-dribbble"></i>
-            </a>
-            <a class="fa-icon" href="https://twitter.com/" title="">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </p>
-          <p>© Untitled | Website created with <a href="http://www.mashup-template.com/" title="Create website with free html template">Mashup Template</a>/<a href="https://www.unsplash.com/" title="Beautiful Free Images">Unsplash</a></p>
-        </nav>
-      </div>
-    </nav>
-  </header>
+				<nav class="nav-footer">
+					<p class="nav-footer-social-buttons">
+						<a class="fa-icon" href="https://www.instagram.com/" title="">
+							<i class="fa fa-instagram"></i>
+						</a>
+						<a class="fa-icon" href="https://dribbble.com/" title="">
+							<i class="fa fa-dribbble"></i>
+						</a>
+						<a class="fa-icon" href="https://twitter.com/" title="">
+							<i class="fa fa-twitter"></i>
+						</a>
+					</p>
+					<p>© Untitled | Website created with <a href="http://www.mashup-template.com/" title="Create website with free html template">Mashup Template</a>/<a href="https://www.unsplash.com/" title="Beautiful Free Images">Unsplash</a></p>
+				</nav>
+			</div>
+		</nav>
+	</header>
 {% endblock %}
 
 {% block body %}
-    <section id="body">
-        <div class="wrapper padding">
-        {% block content %}{% endblock %}
-        </div>
-    </section>
+		<section id="body">
+				<div class="wrapper padding">
+				{% block content %}{% endblock %}
+				</div>
+		</section>
 {% endblock %}
 
 {% block footer %}
-    <div class="footer text-center">
-        <div class="wrapper padding">
-            <p><a href="https://getgrav.org">Grav</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="https://rockettheme.com">RocketTheme</a>.</p>
-        </div>
-    </div>
+		<div class="footer text-center">
+				<div class="wrapper padding">
+						<p><a href="https://getgrav.org">Grav</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="https://rockettheme.com">RocketTheme</a>.</p>
+				</div>
+		</div>
 {% endblock %}
 
 {% block bottom %}
-    {{ assets.js('bottom')|raw }}
+		{{ assets.js('bottom')|raw }}
 {% endblock %}
 
 </body>
