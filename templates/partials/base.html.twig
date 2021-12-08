@@ -1,3 +1,4 @@
+{% set site_name = site.name|default(site.title) %}
 <!DOCTYPE html>
 <html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
 <head>
@@ -44,15 +45,15 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="{{ home_url }}" class="navbar-brand">{{ site.name|default(site.title) }}</a>
+    <a href="{{ home_url }}" class="navbar-brand">{{ site_name }}</a>
   </div>
 
   <nav class="sidebar">
     <div class="navbar-collapse" id="navbar-collapse">
       <div class="site-header hidden-xs">
-          <a class="site-brand" href="{{ home_url }}" title="">
-            <img class="img-responsive site-logo" alt="" src="./assets/images/mashup-logo.svg">
-            {{ site.name|default(site.title) }}
+          <a class="site-brand" href="{{ home_url }}">
+            <img class="img-responsive site-logo" alt="{{ site_name ~ ' logo' }}" src="{{ media_directory('theme://images')[config.theme.brand_logo].cropResize(34,34).url }}">
+            {{ site_name }}
           </a>
         <p>{{ site.tagline }}</p>
       </div>
