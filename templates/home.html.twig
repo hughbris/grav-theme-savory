@@ -1,2 +1,23 @@
 {% extends 'partials/base.html.twig' %}
 
+{% block content %}
+<!-- Add your site or app content here -->
+
+<div class="hero-full-wrapper">
+	<div class="grid">
+		<div class="gutter-sizer"></div>
+		<div class="grid-sizer"></div>
+
+		{# TODO: grids here #}
+
+  </div>
+</div>
+
+{% set inline_main %}
+document.addEventListener("DOMContentLoaded", function (event) {
+	masonryBuild();
+});
+{% endset %}
+{% do assets.addInlineJs(inline_main, {'group': 'main'}) %}
+
+{% endblock %}

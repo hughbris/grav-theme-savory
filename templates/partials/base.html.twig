@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 {% block body %}
 	<main class="{{ page.header.body_classes }}" id="main-collapse">
 		{% block content %}{% endblock %}
+		{{ assets.js('main')|raw }}
 	</main>
 {% endblock %}
 
