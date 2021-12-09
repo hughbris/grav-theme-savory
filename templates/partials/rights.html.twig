@@ -1,1 +1,6 @@
-<p>© Untitled | Website created with <a href="http://www.mashup-template.com/" title="Create website with free html template">Mashup Template</a>/<a href="https://www.unsplash.com/" title="Beautiful Free Images">Unsplash</a></p>
+{% set about_stuff = page.find('/shared/_footer/_about') %}
+<p>{{ config.site.metadata.rights -}}
+{%- if about_stuff is not empty %}
+	| {{ about_stuff.content()|raw }}
+{% endif -%}
+</p>

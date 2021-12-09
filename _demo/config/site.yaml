@@ -5,7 +5,7 @@ author:
   # email: 'joe@test.com'
 metadata:
     description: 'Demo of port of Savory theme to Grav content management system. "Mashup templates have been developped by Orson.io team."'
-    rights: © Untitled | Website created with Mashup Template/Unsplash
+    rights: © Untitled
 
 globals:
 
