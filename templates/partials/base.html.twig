@@ -7,33 +7,33 @@
 <html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
 <head>
 {% block head %}
-		<meta content="IE=edge" http-equiv="X-UA-Compatible">
-		<meta content="width=device-width,initial-scale=1" name="viewport">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width,initial-scale=1" name="viewport">
 
-		<title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
+	<title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
 
-		{% include 'partials/metadata.html.twig' %}
+	{% include 'partials/metadata.html.twig' %}
 
-		<!-- Disable tap highlight on IE -->
-		<meta name="msapplication-tap-highlight" content="no">
+	<!-- Disable tap highlight on IE -->
+	<meta name="msapplication-tap-highlight" content="no">
 
-		<link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
+	<link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
 	<link rel="apple-touch-icon" href="{{ url('theme://images/logo.png?resize=180,180')|e }}">
-		<link rel="canonical" href="{{ page.canonical(true)|e }}" />
+	<link rel="canonical" href="{{ page.canonical(true)|e }}" />
 {% endblock head %}
 
 {% block stylesheets %}
-		{% do assets.addCss('theme://css/main.82cfd66e.css', 100) %}
-		{% do assets.addCss('theme://css/custom.css', 1) %}
+	{% do assets.addCss('theme://css/main.82cfd66e.css', 100) %}
+	{% do assets.addCss('theme://css/custom.css', 1) %}
 {% endblock %}
 
 {% block javascripts %}
-		{% do assets.addJs('theme://js/main.85741bff.js', {'group': 'bottom'}) %}
+	{% do assets.addJs('theme://js/main.85741bff.js', {'group': 'bottom'}) %}
 {% endblock %}
 
 {% block assets deferred %}
-		{{ assets.css()|raw }}
-		{{ assets.js()|raw }}
+	{{ assets.css()|raw }}
+	{{ assets.js()|raw }}
 {% endblock %}
 </head>
 <body class="{{ page.header.body_classes|e }}">
