@@ -1,1 +1,15 @@
 enabled: true
+
+social_networks: # the text '{{ account }}' will be substituted for the account name provided in site.yaml
+  facebook:
+    icon: facebook-f
+    permalinks: 'https://facebook.com/{{ account }}'
+  twitter:
+    permalinks: 'https://twitter.com/{{ account }}'
+  instagram:
+    permalinks: 'https://www.instagram.com/{{ account }}'
+  dribbble:
+    permalinks: 'https://{{ account }}.dribbble.com'
+  linkedin:
+    label: LinkedIn
+    permalinks: 'https://www.linkedin.com/in/{{ account }}'
