@@ -27,7 +27,15 @@
 	{% do assets.addCss('theme://css/custom.css', 1) %}
 {% endblock %}
 
+{% set nav_js %}
+document.addEventListener("DOMContentLoaded", function (event) {
+  navbarToggleSidebar();
+  navActivePage();
+});
+{% endset %}
+
 {% block javascripts %}
+	{% do assets.addInlineJs(nav_js, {'group': 'inline_bottom'}) %}
 	{% do assets.addJs('theme://js/main.85741bff.js', {'group': 'bottom'}) %}
 {% endblock %}
 
@@ -80,7 +88,8 @@
 	</main>
 {% endblock %}
 
-{% block bottom %}
+{% block bottom deferred %}
+	{{ assets.js('inline_bottom')|raw }} {# refer https://github.com/getgrav/grav/issues/1893 for why #}
 	{{ assets.js('bottom')|raw }}
 {% endblock %}
 
