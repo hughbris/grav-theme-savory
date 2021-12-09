@@ -75,15 +75,15 @@
 {% endblock %}
 
 {% block body %}
-		<section id="body">
-				<div class="wrapper padding">
-				{% block content %}{% endblock %}
-				</div>
-		</section>
+	<section id="body">
+		<div class="wrapper padding">
+		{% block content %}{% endblock %}
+		</div>
+	</section>
 {% endblock %}
 
 {% block bottom %}
-		{{ assets.js('bottom')|raw }}
+	{{ assets.js('bottom')|raw }}
 {% endblock %}
 
 </body>
