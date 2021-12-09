@@ -8,9 +8,25 @@
 		<div class="gutter-sizer"></div>
 		<div class="grid-sizer"></div>
 
-		{# TODO: grids here #}
-
-  </div>
+		{% for item in page.header.grid_items %}
+		<div class="grid-item">
+			<img class="img-responsive" alt="" src="{{ media[item.hero].url }}">
+			{% set target_page = page.find(item.target) %}
+			{% if target_page is not empty %}
+				<a href="{{ target_page.url }}" class="project-description"> {# this convoluted logic is so that the link respects subdirectory slashes #}
+			{% endif %}
+			<div class="project-text-holder">
+				<div class="project-text-inner">
+					<h3>{{ item.heading|e }}</h3>
+					{{ item.teaser|trim|markdown()|raw }}
+				</div>
+			</div>
+			{% if target_page is not empty %}
+				</a>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
 </div>
 
 {% set inline_main %}
