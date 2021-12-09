@@ -1,0 +1,14 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+    	<img class="img-responsive" alt="{{ page.header.feature.alt|default('') }}" src="{{ (page.media[page.header.feature.source]|default(page.media|first)).url }}">
+	</div>
+	<div class="col-xs-12 col-md-6">
+    	<h1>{{ page.title }}</h1>
+
+		{{ page.content()|raw }}
+	</div>
+</div>
+{% endblock %}

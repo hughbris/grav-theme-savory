@@ -75,11 +75,9 @@
 {% endblock %}
 
 {% block body %}
-	<section id="body">
-		<div class="wrapper padding">
+	<main class="{{ page.header.body_classes }}" id="main-collapse">
 		{% block content %}{% endblock %}
-		</div>
-	</section>
+	</main>
 {% endblock %}
 
 {% block bottom %}
