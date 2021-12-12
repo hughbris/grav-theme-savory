@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 			<div class="navbar-collapse" id="navbar-collapse">
 				<div class="site-header hidden-xs">
 						<a class="site-brand" href="{{ home_url }}">
-							<img class="img-responsive site-logo" alt="{{ site_name ~ ' logo' }}" src="{{ media_directory('theme://images')[config.theme.brand_logo].cropResize(34,34).url }}">
+							<img class="img-responsive site-logo" alt="{{ site_name ~ ' logo' }}" src="{{ media_directory('theme://images')[config.theme.brand_logo].url }}">
 							{{ site_name }}
 						</a>
 					<p>{{ site.tagline }}</p>
