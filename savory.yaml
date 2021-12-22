@@ -13,3 +13,5 @@ social_networks: # the text '{{ account }}' will be substituted for the account 
   linkedin:
     label: LinkedIn
     permalinks: 'https://www.linkedin.com/in/{{ account }}'
+  pinterest:
+    permalinks: 'https://www.pinterest.com/{{ account }}'
