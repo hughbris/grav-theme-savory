@@ -1,0 +1,40 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-xs-12 section-container-spacer">
+		<h1>{{ page.title }}</h1>
+		{{ page.content()|raw }}
+	</div>
+
+	{# {% block sections %} #}
+		{% set sections = [] %}
+		{% for p in page.collection('sections')|default(page.children) %}{{ dump(p.media)}}
+			{% set section = {
+				'feature': {
+					'src': p.media[p.header.feature.source]|default(p.media|first).url,
+					'alt': p.header.feature.alt|default(''),
+					},
+				'heading': p.title,
+				'summary': p.summary,
+				'target': p.url,
+				'label': p.header.teaser|default('Get in touch'),
+				}
+			%}
+			{% set sections = sections|merge([section]) %}
+		{% endfor %}
+	{# {% endblock sections %} {{ dump(sections)}} #} {# this was supposed to allow me to override this array, but `sections` var does not seem to be available outside the block #}
+
+	{% for section in sections %}
+		<div class="col-xs-12 col-md-4 section-container-spacer">
+			<img class="img-responsive" alt="{{ section.feature.alt }}" src="{{ section.feature.src }}">
+			<h2>{{ section.heading }}</h2>
+			{{ section.summary|raw }}
+			<a href="{{ section.target }}" class="btn btn-primary">{{ section.label }}</a>
+		</div>
+	{% endfor %}
+
+</div>
+
+{% endblock %}
