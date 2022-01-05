@@ -4,6 +4,7 @@
 
 <div class="row">
 	<div class="col-xs-12 section-container-spacer">
+		{% block breadcrumbs %}{% endblock %}
 		<h1>{{ page.title }}</h1>
 		{{ page.content()|raw }}
 	</div>
