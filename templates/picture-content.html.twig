@@ -3,6 +3,7 @@
 {% block content %}
 <div class="row">
 	<div class="col-xs-12 col-md-6">
+		{% block pre_picture %}{% endblock %}
     	<img class="img-responsive" alt="{{ page.header.feature.alt|default('') }}" src="{{ (page.media[page.header.feature.source]|default(page.media|first)).url }}">
 		{% block post_picture %}{% endblock %}
 	</div>
