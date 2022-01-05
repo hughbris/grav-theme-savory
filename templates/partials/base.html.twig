@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	{{ assets.js()|raw }}
 {% endblock %}
 </head>
-<body class="{{ page.header.body_classes|e }}">
+<body class="{{ (page.header.body_classes|e ~ ' template-' ~ page.template)|trim  }}">
 
 {% block header %}
 	<!-- Add your content of header -->
