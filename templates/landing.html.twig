@@ -14,13 +14,13 @@
 		{% for p in page.collection('sections')|default(page.children) %}{{ dump(p.media)}}
 			{% set section = {
 				'feature': {
-					'src': p.media[p.header.feature.source]|default(p.media|first).url,
+					'src': (p.media[p.header.feature.source]|default(p.media|first)).url,
 					'alt': p.header.feature.alt|default(''),
 					},
 				'heading': p.title,
 				'summary': p.summary,
 				'target': p.url,
-				'label': p.header.teaser|default('Get in touch'),
+				'label': p.header.teaser,
 				}
 			%}
 			{% set sections = sections|merge([section]) %}
@@ -31,10 +31,10 @@
 	{% for section in sections %}
 		{% block panel %}
 		<div class="col-xs-12 col-md-4 section-container-spacer">
-			<img class="img-responsive" alt="{{ section.feature.alt }}" src="{{ section.feature.src }}">
+			<img class="img-responsive" alt="{{ section.feature.alt }}" src="{{ section.feature.src|default((page.media|first).url) }}">
 			<h2>{{ section.heading }}</h2>
 			{{ section.summary|raw }}
-			<a href="{{ section.target }}" class="btn btn-primary">{{ section.label }}</a>
+			<a href="{{ section.target }}" class="btn btn-primary">{{ section.label|default('Get in touch') }}</a>
 		</div>
 		{% endblock %}
 	{% endfor %}
