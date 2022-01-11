@@ -1,0 +1,55 @@
+{% extends '1-2-col.html.twig' %}
+
+{% block col1 %}
+	{% include 'forms/form.html.twig' with { form: forms('contact')} %}
+{% endblock %}
+
+{% block col2 %}
+	{% set contacts = config.site.globals.contacts %}
+	{% if contacts is not empty %}
+		<ul class="list-unstyled address-container">
+			{% if contacts.phone is defined %}
+			<li>
+				<span class="fa-icon">
+				<i class="fa fa-phone" aria-hidden="true"></i>
+				</span>
+				{{ contacts.phone.country ? "+ #{contacts.phone.country}" }}
+				{{ contacts.phone.region ? contacts.phone.region|regex_replace('/^0/', '') }}
+				{{ contacts.phone.number }} {# NB. recommend this becomes a tel: link, but that is not in the source template #}
+			</li>
+			{% endif %}
+			{% if contacts.email is defined %}
+			<li>
+				<span class="fa-icon">
+					<i class="fa fa-at" aria-hidden="true"></i>
+				</span>
+				{{ contacts.email }} {# NB. again, kinda beggars belief that this is not hyperlinked but the source theme does not have it, go figure #}
+			</li>
+			{% endif %}
+			{% if contacts.address is defined %}
+			<li>
+				<span class="fa-icon">
+				<i class="fa fa-map-marker" aria-hidden="true"></i>
+				</span>
+				{{ contacts.address }}
+			</li>
+			{% endif %}
+		</ul>
+	{% endif %}
+
+	{% if config.site.globals.social is defined %}
+		<h3>Follow me on social networks</h3>
+		{# these won't be the same networks shown in the source theme demo, but I ain't gonna repeat myself or write exception stuff #}
+		{% for network, account in config.site.globals.social %}
+			{% set social_network = theme_config.social_networks[network] %}
+			{% if social_network is not empty %}
+				<a class="fa-icon" href="{{ evaluate_twig(social_network.permalinks, {u: account}) }}" title="{{ social_network.label|default(network|capitalize) }}"> {# added: content in title attribute #}
+					<i class="fa fa-{{ social_network.icon|default(network|lower) }}"></i>
+				</a>
+			{% else %}
+				{{ dump("Warning: social network \"#{network}\" from site.yaml is not defined in theme.yaml, unable to show icon in footer.") }}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+
+{% endblock %}

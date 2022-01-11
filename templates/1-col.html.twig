@@ -1,0 +1,20 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="section-container-spacer">
+			{% block breadcrumbs %}{% endblock %}
+
+			<h1>{{ page.title }}</h1>
+
+			{% block inner_content %}
+				{{ page.content|raw }}
+			{% endblock %}
+		</div>
+		{% block more_sections %}{% endblock %}
+	</div>
+</div>
+
+{% endblock content %}

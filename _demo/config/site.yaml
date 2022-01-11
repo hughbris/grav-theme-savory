@@ -9,12 +9,13 @@ metadata:
 
 globals:
 
-  # contacts:
-  #   email: info@example.com
-  #   phone:
-  #     - '(+1) 000 123 456789'
-  #     - '+2 987 654 321'
-  #   address: 'Eiusmod Tempor inc ,St Dolore Place,Kingsport 56777' # optional in template
+  contacts:
+    email: e-mail@mail.io
+    phone:
+      country: 33
+      region: 09 07
+      number: 45 12 65
+    address: '42 rue Moulbert 75016 Paris' # optional in template
 
   social: # these names are added to make the social links show
     facebook: vacuousExample

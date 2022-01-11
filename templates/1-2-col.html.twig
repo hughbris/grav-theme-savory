@@ -1,0 +1,18 @@
+{% extends '1-col.html.twig' %}
+
+{% block more_sections %}
+	<div class="section-container-spacer">
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+			{% block col1 %}
+			{% endblock col1 %}
+			</div>
+
+			<div class="col-xs-12 col-md-6">
+			{% block col2 %}
+			{% endblock col2 %}
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
