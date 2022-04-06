@@ -18,7 +18,9 @@
 			<div class="project-text-holder">
 				<div class="project-text-inner">
 					<h3>{{ item.heading|e }}</h3>
-					{{ item.teaser|trim|markdown()|raw }}
+					{% if item.teaser %}
+						{{ item.teaser|trim|markdown()|raw }}
+					{% endif %}
 				</div>
 			</div>
 			{% if target_page is not empty %}

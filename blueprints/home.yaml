@@ -1,0 +1,54 @@
+title: Homepage
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+
+          fields:
+            content:
+              unset@: true
+              # NB. homepage content is currently ignored (not rendered)
+
+            header.grid_items:
+              label: Photo panel items
+              type: list
+              collapsed: true
+              btnLabel: Add Panel
+              ordering@: header.title
+              fields:
+
+                .heading:
+                  type: text
+                  label: Heading
+                  help: Shows in large font when users hover over the panel image
+                  validate:
+                    required: true
+
+                .teaser:
+                  type: text
+                  label: Teaser line
+                  help: Short text to further explain or entice a user towards the link target, shown when hovering
+
+                .target:
+                  type: pages
+                  label: Link target
+                  show_all: false
+                  show_modular: false
+                  show_root: false
+                  multiple: false
+                  # options: # TODO - show filtered views etc
+                  validate:
+                    required: true
+
+                .hero:
+                  type: pagemediaselect
+                  label: Image
+                  multiple: false
