@@ -5,7 +5,12 @@
 	<div class="col-xs-12 col-md-6">
 		{% block pre_picture %}{% endblock %}
 		{% block hero -%}
-		<img class="img-responsive" alt="{{ page.header.feature.alt|default('') }}" src="{{ (page.media[page.header.feature.source]|default(page.media|first)).url }}">
+			{% set feature_image = page.media[page.header.feature.source] %}
+			{% if feature_image %}
+				<img class="img-responsive" alt="{{ page.header.feature.alt|default(feature_image.meta.alt)|default('') }}" src="{{ (feature_image|default(page.media|first)).url }}">
+			{% else %}
+				{{ debug('Feature image could not be loaded and there is no page media fallback') }}
+			{% endif %}
 		{%- endblock %}
 		{% block post_picture %}{% endblock %}
 	</div>
