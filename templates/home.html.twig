@@ -12,20 +12,24 @@
 			{% if hero %} {# only show the panel if the image can be loaded #}
 			<div class="grid-item">
 				<img class="img-responsive" alt="{{ hero.meta.alt|default('') }}" src="{{ hero.url }}">
-				{% set target_page = page.find(item.target) %}
-				{% if target_page is not empty %}
-					<a href="{{ target_page.url }}" class="project-description">
+				{% if item.target|starts_with(['http://', 'https://', '//']) %} {# external link test #}
+					{% set target_url = item.target %}
+				{% else %}
+					{% set target_url = page.find(item.target).url %}
 				{% endif %}
-				<div class="project-text-holder">
-					<div class="project-text-inner">
-						<h3>{{ item.heading|e }}</h3>
-						{% if item.teaser %}
-							{{ item.teaser|trim|markdown()|raw }}
-						{% endif %}
-					</div>
-				</div>
-				{% if target_page is not empty %}
+				{% if target_url is not empty %}
+					<a href="{{ target_url }}" class="project-description">
+						<div class="project-text-holder">
+							<div class="project-text-inner">
+								<h3>{{ item.heading|e }}</h3>
+								{% if item.teaser %}
+									{{ item.teaser|trim|markdown()|raw }}
+								{% endif %}
+							</div>
+						</div>
 					</a>
+				{% else %}
+					{{ debug("Homepage grid item target #{item.target} could not be identified as a valid link") }}
 				{% endif %}
 			</div>
 			{% endif %}
