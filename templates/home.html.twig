@@ -7,26 +7,28 @@
 	<div class="grid">
 		<div class="gutter-sizer"></div>
 		<div class="grid-sizer"></div>
-
 		{% for item in page.header.grid_items %}
-		<div class="grid-item">
-			<img class="img-responsive" alt="" src="{{ page.media[item.hero].url }}">
-			{% set target_page = page.find(item.target) %}
-			{% if target_page is not empty %}
-				<a href="{{ target_page.url }}" class="project-description"> {# this convoluted logic is so that the link respects subdirectory slashes #}
-			{% endif %}
-			<div class="project-text-holder">
-				<div class="project-text-inner">
-					<h3>{{ item.heading|e }}</h3>
-					{% if item.teaser %}
-						{{ item.teaser|trim|markdown()|raw }}
-					{% endif %}
+			{% set hero = page.media[item.hero] %}
+			{% if hero %} {# only show the panel if the image can be loaded #}
+			<div class="grid-item">
+				<img class="img-responsive" alt="{{ hero.meta.alt|default('') }}" src="{{ hero.url }}">
+				{% set target_page = page.find(item.target) %}
+				{% if target_page is not empty %}
+					<a href="{{ target_page.url }}" class="project-description">
+				{% endif %}
+				<div class="project-text-holder">
+					<div class="project-text-inner">
+						<h3>{{ item.heading|e }}</h3>
+						{% if item.teaser %}
+							{{ item.teaser|trim|markdown()|raw }}
+						{% endif %}
+					</div>
 				</div>
+				{% if target_page is not empty %}
+					</a>
+				{% endif %}
 			</div>
-			{% if target_page is not empty %}
-				</a>
 			{% endif %}
-		</div>
 		{% endfor %}
 	</div>
 </div>
