@@ -18,7 +18,7 @@
 		{% for p in page.collection('sections')|default(page.children) %}{{ dump(p.media)}}
 			{% set section = {
 				'feature': {
-					'src': (p.media[p.header.feature.source]|default(p.media|first)).url,
+					'src': (p.media[p.header.feature.source]|default(p.media.images|first)).url,
 					'alt': p.header.feature.alt|default(''),
 					},
 				'heading': p.title,
@@ -32,16 +32,16 @@
 	{# {% endblock sections %} {{ dump(sections)}} #} {# this was supposed to allow me to override this array, but `sections` var does not seem to be available outside the block #}
 
 	{% block panels %}
-	{% for section in sections %}
-		{% block panel %}
-		<div class="col-xs-12 col-md-4 section-container-spacer">
-			<img class="img-responsive" alt="{{ section.feature.alt }}" src="{{ section.feature.src|default((page.media|first).url) }}">
-			<h2>{{ section.heading }}</h2>
-			{{ section.summary|raw }}
-			<a href="{{ section.target }}" class="btn btn-primary">{{ section.label|default('Get in touch') }}</a>
-		</div>
-		{% endblock %}
-	{% endfor %}
+		{% for section in sections %}
+			{% block panel %}
+			<div class="col-xs-12 col-md-4 section-container-spacer">
+				<img class="img-responsive" alt="{{ section.feature.alt }}" src="{{ section.feature.src|default((page.media.images|first).url) }}">
+				<h2>{{ section.heading }}</h2>
+				{{ section.summary|raw }}
+				<a href="{{ section.target }}" class="btn btn-primary">{{ section.label|default('Get in touch') }}</a>
+			</div>
+			{% endblock %}
+		{% endfor %}
 	{% endblock %}
 
 </div>
