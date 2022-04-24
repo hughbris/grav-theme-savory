@@ -1,0 +1,23 @@
+title: Landing Page
+extends@:
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+
+          fields:
+            header.placement:
+              label: Content Placement
+              help: Where the content appears in relation to the main picture panels
+              type: toggle
+              options:
+                'above': 'Above'
+                'below': 'Below'
+              ordering@: header.title
