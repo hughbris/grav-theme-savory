@@ -16,7 +16,7 @@ form:
               type: section
               title: Feature Image
               text: "This is a bold (\"_hero_\") image that shows down the left. You can set important information about it by setting image metadata in Page Media."
-              # ordering@: media_order # not needed because it happens to be the last
+              ordering@: media_order
 
               fields:
                 .source:
@@ -28,5 +28,4 @@ form:
                   type: text
                   label: Image Description
                   help: "Describe the media file as a substitute for users who can't see it (\"alternative text\") and for search engines"
-
-                  # not going to include .alt .caption or .credit here though they are supported in the template; they are best supplied in a .meta.yaml file (made easy with the admin-addon-media-metadata plugin)
+                  # NB. alt text is best supplied in a .meta.yaml file (made easy with the admin-addon-media-metadata plugin)
