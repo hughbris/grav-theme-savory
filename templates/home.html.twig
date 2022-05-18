@@ -11,7 +11,7 @@
 			{% set hero = page.media[item.hero] %}
 			{% if hero %} {# only show the panel if the image can be loaded #}
 			<div class="grid-item">
-				<img class="img-responsive" alt="{{ hero.meta.alt|default('') }}" src="{{ hero.url }}">
+				<img loading="lazy" class="img-responsive" alt="{{ hero.meta.alt|default('') }}" src="{{ hero.url }}">
 				{% if item.target|starts_with(['http://', 'https://', '//']) %} {# external link test #}
 					{% set target_url = item.target %}
 				{% else %}
