@@ -69,7 +69,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 				</div>
 
 				{% block header_navigation %}
+					{% cache 1200 %}
 						{% include 'partials/navigation.html.twig' %}
+					{% endcache %}
 				{% endblock %}
 
 				<nav class="nav-footer">
